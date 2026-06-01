@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bestätigung</title><link rel="stylesheet" href="style.css"></head>
+<body class="dark">
+<div class="wrapper">
+<div class="success">
+<h1>🎉 Herzlichen Glückwunsch</h1>
+<p>Ihre Teilnahme wurde erfolgreich registriert.</p>
+<h2 id="country"></h2>
+<p>Die Gewinner werden per E‑Mail benachrichtigt.</p>
+</div>
+</div>
+<script>
+document.getElementById('country').innerText='Gewähltes Reiseziel: '+localStorage.getItem('country');
+</script>
+</body></html>

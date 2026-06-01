@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reiseziel wählen</title><link rel="stylesheet" href="style.css"></head>
+<body class="dark">
+<div class="wrapper">
+<h1>Wähle dein Traumziel</h1>
+<div class="grid">
+<div class="country" onclick="selectCountry('Deutschland')">🇩🇪<h3>Deutschland</h3><p>Schokokuss</p></div>
+<div class="country" onclick="selectCountry('USA')">🇺🇸<h3>USA</h3><p>Cookie Dough</p></div>
+<div class="country" onclick="selectCountry('Taiwan')">🇹🇼<h3>Taiwan</h3><p>Boba</p></div>
+<div class="country" onclick="selectCountry('Venezuela')">🇻🇪<h3>Venezuela</h3><p>Majarete</p></div>
+<div class="country" onclick="selectCountry('Italien')">🇮🇹<h3>Italien</h3><p>Amaretti</p></div>
+</div>
+</div>
+<script>
+function selectCountry(c){localStorage.setItem('country',c);window.location='success.html';}
+</script>
+</body></html>
