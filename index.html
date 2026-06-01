@@ -3,161 +3,1053 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SkyWings Airlines</title>
-
+<title>Rausch – Schokolade seit 1918</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
+  :root {
+    --dark: #1a1209;
+    --dark-brown: #2c1a0a;
+    --medium-brown: #5c3a1e;
+    --gold: #c9a84c;
+    --gold-light: #e4c46e;
+    --cream: #f5f0e8;
+    --light-bg: #faf7f2;
+    --text-dark: #1a1209;
+    --text-mid: #4a3828;
+    --text-light: #8a7060;
+    --white: #ffffff;
+    --card-blue: #1a2a4a;
+    --card-red: #5c1a1a;
+    --card-yellow: #8a6a10;
+    --card-green: #1a3a20;
+  }
 
-body{
-    background:#f5f7fa;
-}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-header{
-    background:#05164d;
-    color:white;
-    padding:20px 40px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--light-bg);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
 
-.logo{
-    font-size:28px;
-    font-weight:bold;
-}
+  /* ── TOP BAR ── */
+  .top-bar {
+    background: var(--dark);
+    color: #c9b89a;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 48px;
+  }
+  .top-bar a { color: #c9b89a; text-decoration: none; }
+  .top-bar-center { font-weight: 600; color: var(--gold); letter-spacing: 0.15em; }
+  .top-bar-right { display: flex; gap: 20px; align-items: center; }
 
-.hero{
-    height:500px;
-    background:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600')
-    center/cover;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
+  /* ── MAIN NAV ── */
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid #e8e0d0;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 40px;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .nav-left { display: flex; gap: 32px; }
+  .nav-left a {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-left a:hover { color: var(--gold); }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-style: italic;
+    color: var(--dark);
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+  .nav-right { display: flex; gap: 20px; justify-content: flex-end; align-items: center; }
+  .nav-right a {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s;
+  }
+  .nav-right a:hover { color: var(--gold); }
 
-.hero-box{
-    background:rgba(255,255,255,0.95);
-    padding:40px;
-    border-radius:15px;
-    width:500px;
-    box-shadow:0 10px 30px rgba(0,0,0,.2);
-}
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0d0905 0%, #1e1008 40%, #2a1a0a 100%);
+    min-height: 520px;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(90,50,10,0.3) 0%, transparent 70%);
+  }
+  .hero-text {
+    padding: 60px 40px 60px 72px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 58px;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 22px;
+    font-weight: 700;
+  }
+  .hero-sub {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #b8a090;
+    margin-bottom: 36px;
+    max-width: 280px;
+    font-weight: 300;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 14px 28px;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
 
-.hero-box h1{
-    color:#05164d;
-    margin-bottom:20px;
-}
+  .hero-products {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 40px 40px 0;
+    gap: 10px;
+    height: 100%;
+  }
 
-input{
-    width:100%;
-    padding:12px;
-    margin:8px 0;
-    border:1px solid #ccc;
-    border-radius:8px;
-}
+  /* Chocolate bar cards */
+  .choco-card {
+    width: 90px;
+    height: 230px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 18px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-shadow: -4px 4px 20px rgba(0,0,0,0.5);
+  }
+  .choco-card:hover { transform: translateY(-12px); }
+  .choco-card:nth-child(1) { background: linear-gradient(160deg, #d4a84b 0%, #8a6020 100%); height: 200px; }
+  .choco-card:nth-child(2) { background: linear-gradient(160deg, #3a6ab0 0%, #1a3870 100%); height: 230px; }
+  .choco-card:nth-child(3) { background: linear-gradient(160deg, #b03a3a 0%, #701a1a 100%); height: 215px; }
+  .choco-card:nth-child(4) { background: linear-gradient(160deg, #d4a820 0%, #8a6a10 100%); height: 225px; }
+  .choco-card:nth-child(5) { background: linear-gradient(160deg, #3a8a50 0%, #1a4a2a 100%); height: 220px; }
 
-button{
-    width:100%;
-    padding:12px;
-    border:none;
-    background:#05164d;
-    color:white;
-    border-radius:8px;
-    cursor:pointer;
-    margin-top:10px;
-}
+  .choco-logo {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: rgba(255,255,255,0.9);
+    font-size: 13px;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+  .choco-name {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    text-align: center;
+    font-weight: 500;
+  }
+  .choco-origin {
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    margin-top: 3px;
+  }
 
-button:hover{
-    opacity:0.9;
-}
+  /* Shine effect on cards */
+  .choco-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.12), transparent);
+    border-radius: 8px 8px 0 0;
+  }
 
-.section{
-    max-width:1200px;
-    margin:50px auto;
-    padding:0 20px;
-}
+  /* ── USP BAR ── */
+  .usp-bar {
+    background: var(--white);
+    border-bottom: 1px solid #e8e0d0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 22px 60px;
+    gap: 10px;
+  }
+  .usp-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .usp-icon {
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--gold);
+    font-size: 14px;
+  }
+  .usp-text {
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.4;
+  }
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    text-align: center;
+    padding: 60px 40px 40px;
+  }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: var(--dark);
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+  .section-header p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.6;
+    font-weight: 300;
+    max-width: 420px;
+    margin: 0 auto;
+  }
 
-.card{
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
-}
+  /* ── PRODUCT GRID ── */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    margin: 0 40px 60px;
+  }
+  .product-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .product-card:hover .product-img-wrap img { transform: scale(1.05); }
+  .product-img-wrap {
+    height: 220px;
+    overflow: hidden;
+  }
+  .product-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+  }
 
-.message{
-    margin-top:10px;
-    font-weight:bold;
-}
+  /* Colored overlay panels */
+  .product-info {
+    padding: 18px 16px 16px;
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+  }
+  .product-card:nth-child(1) .product-info { background: #2a1a0a; }
+  .product-card:nth-child(2) .product-info { background: var(--card-blue); }
+  .product-card:nth-child(3) .product-info { background: var(--card-red); }
+  .product-card:nth-child(4) .product-info { background: var(--card-yellow); }
+  .product-card:nth-child(5) .product-info { background: var(--card-green); }
+
+  .product-origin {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .product-desc {
+    font-size: 11px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    flex: 1;
+  }
+  .btn-outline-white {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.45);
+    color: rgba(255,255,255,0.85);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 9px 16px;
+    text-decoration: none;
+    margin-top: 14px;
+    transition: all 0.2s;
+    width: fit-content;
+  }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.7); }
+
+  /* Placeholder images using SVG gradients */
+  .img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+  }
+  .img-placeholder.p1 { background: linear-gradient(135deg, #3a2010, #6a4020); }
+  .img-placeholder.p2 { background: linear-gradient(135deg, #2a3a1a, #4a6a2a); }
+  .img-placeholder.p3 { background: linear-gradient(135deg, #3a2a30, #1a1a2a); }
+  .img-placeholder.p4 { background: linear-gradient(135deg, #3a3010, #6a5a20); }
+  .img-placeholder.p5 { background: linear-gradient(135deg, #1a2a1a, #2a4a2a); }
+
+  /* ── GOLDEN TICKET BANNER ── */
+  .golden-ticket {
+    background: linear-gradient(135deg, #0f0a05 0%, #1e1208 50%, #100a05 100%);
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    align-items: center;
+    min-height: 340px;
+    position: relative;
+    overflow: hidden;
+  }
+  .golden-ticket::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(180,120,20,0.15) 0%, transparent 60%);
+  }
+  .ticket-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    position: relative;
+    z-index: 2;
+  }
+  .ticket-card {
+    width: 220px;
+    height: 140px;
+    background: linear-gradient(135deg, #c9a030, #8a6010, #c9a030);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.2);
+    position: relative;
+    overflow: hidden;
+    transform: rotate(-5deg);
+  }
+  .ticket-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -20%;
+    width: 60%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transform: rotate(20deg);
+  }
+  .ticket-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--dark);
+    font-size: 26px;
+    line-height: 1.1;
+    text-align: center;
+    font-weight: 700;
+  }
+  .ticket-icon {
+    font-size: 18px;
+    margin-top: 6px;
+    opacity: 0.7;
+  }
+  .ticket-text {
+    padding: 40px 72px 40px 20px;
+    position: relative;
+    z-index: 2;
+  }
+  .ticket-eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .ticket-title-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+  .ticket-desc {
+    font-size: 12px;
+    line-height: 1.7;
+    color: #9a8878;
+    margin-bottom: 28px;
+    max-width: 340px;
+    font-weight: 300;
+  }
+  .btn-outline-gold {
+    display: inline-block;
+    border: 1.5px solid var(--gold);
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 12px 28px;
+    text-decoration: none;
+    transition: all 0.25s;
+    cursor: pointer;
+    background: none;
+  }
+  .btn-outline-gold:hover { background: var(--gold); color: var(--dark); }
+
+  /* Carousel dots */
+  .carousel-dots {
+    display: flex;
+    gap: 8px;
+    margin-top: 24px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .dot.active { background: var(--gold); }
+
+  /* ── COLLECTION FORMATS ── */
+  .formats-section {
+    background: var(--light-bg);
+    padding: 60px 40px;
+    text-align: center;
+  }
+  .formats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    gap: 40px;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  .format-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .format-item:hover { transform: translateY(-4px); }
+  .format-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--medium-brown);
+  }
+  .format-name {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+  .format-desc {
+    font-size: 11px;
+    color: var(--text-light);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  /* ── EDITORIAL GRID ── */
+  .editorial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 0 40px 60px;
+  }
+  .editorial-card {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .editorial-card:hover .ed-overlay { opacity: 1; }
+  .ed-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .ed-bg-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+  }
+  .ed-bg-placeholder.e1 { background: linear-gradient(135deg, #1a2a10, #3a5a20); }
+  .ed-bg-placeholder.e2 { background: linear-gradient(135deg, #101828, #203050); }
+  .ed-bg-placeholder.e3 { background: linear-gradient(135deg, #2a1a10, #5a3020); }
+
+  .ed-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 24px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+  }
+  .ed-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--white);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .ed-subtitle {
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 10px;
+    font-weight: 300;
+    line-height: 1.4;
+  }
+  .ed-link {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 1px;
+    transition: opacity 0.2s;
+  }
+  .ed-link:hover { opacity: 0.75; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    padding: 56px 60px 24px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr 1.5fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-style: italic;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .footer-tagline {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    font-weight: 500;
+  }
+  .footer-col h4 {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 9px; }
+  .footer-col ul li a {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--gold); }
+
+  .newsletter-input-wrap {
+    display: flex;
+    margin-top: 12px;
+  }
+  .newsletter-input {
+    flex: 1;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 10px 14px;
+    color: var(--white);
+    font-size: 11px;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+  }
+  .newsletter-input::placeholder { color: rgba(255,255,255,0.3); }
+  .newsletter-btn {
+    background: var(--gold);
+    border: none;
+    width: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--dark);
+    font-size: 14px;
+    transition: background 0.2s;
+  }
+  .newsletter-btn:hover { background: var(--gold-light); }
+
+  .social-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .social-link {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-size: 12px;
+    transition: all 0.2s;
+    border-radius: 2px;
+  }
+  .social-link:hover { border-color: var(--gold); color: var(--gold); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-bottom-left {
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    font-weight: 300;
+  }
+  .footer-bottom-links { display: flex; gap: 20px; }
+  .footer-bottom-links a {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.2s;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding-bottom: 1px;
+  }
+  .footer-bottom-links a:hover { color: rgba(255,255,255,0.6); }
+
+  /* ── SVG ICONS ── */
+  .icon { display: inline-block; }
 </style>
 </head>
-
 <body>
 
-<header>
-    <div class="logo">SkyWings Airlines</div>
-    <div>Premium Travel Experience</div>
-</header>
+<!-- TOP BAR -->
+<div class="top-bar">
+  <span>Kostenloser Versand ab 49 € (DE)</span>
+  <span class="top-bar-center">SCHOKOLADE SEIT 1918</span>
+  <div class="top-bar-right">
+    <a href="#">Mein Konto &#9786;</a>
+    <a href="#">&#127758; DE ▾</a>
+  </div>
+</div>
 
+<!-- MAIN NAV -->
+<nav>
+  <div class="nav-left">
+    <a href="#">Shop</a>
+    <a href="#">Plantagen</a>
+    <a href="#">Manufaktur</a>
+    <a href="#">Rausch</a>
+  </div>
+  <div class="logo">Rausch</div>
+  <div class="nav-right">
+    <a href="#">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      Suche
+    </a>
+    <a href="#">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      Wunschliste
+    </a>
+    <a href="#">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      Warenkorb
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
 <section class="hero">
-    <div class="hero-box">
-        <h1>Willkommen bei SkyWings</h1>
-
-        <h3>Demo Login</h3>
-        <input type="email" id="email" placeholder="E-Mail">
-        <input type="password" id="password" placeholder="Passwort">
-
-        <button onclick="loginDemo()">Anmelden</button>
-
-        <br><br>
-
-        <h3>Aktionscode</h3>
-        <input type="text" id="promoCode" placeholder="Code eingeben">
-
-        <button onclick="redeemCode()">Code einlösen</button>
-
-        <div id="message" class="message"></div>
+  <div class="hero-text">
+    <div class="hero-eyebrow">Neu: Origins Collection</div>
+    <h1 class="hero-title">Discover<br>the World</h1>
+    <p class="hero-sub">Fünf Länder. Fünf Geschichten.<br>Eine Kollektion, die dich auf eine kulinarische Reise mitnimmt.</p>
+    <a href="#" class="btn-primary">Kollektion entdecken</a>
+  </div>
+  <div class="hero-products">
+    <div class="choco-card">
+      <div class="choco-logo">Rausch</div>
+      <div class="choco-name">Schokokuss</div>
+      <div class="choco-origin">Germany</div>
     </div>
+    <div class="choco-card">
+      <div class="choco-logo">Rausch</div>
+      <div class="choco-name">Cookie Dough</div>
+      <div class="choco-origin">USA</div>
+    </div>
+    <div class="choco-card">
+      <div class="choco-logo">Rausch</div>
+      <div class="choco-name">Boba</div>
+      <div class="choco-origin">Taiwan</div>
+    </div>
+    <div class="choco-card">
+      <div class="choco-logo">Rausch</div>
+      <div class="choco-name">Majarete</div>
+      <div class="choco-origin">Venezuela</div>
+    </div>
+    <div class="choco-card">
+      <div class="choco-logo">Rausch</div>
+      <div class="choco-name">Amaretti</div>
+      <div class="choco-origin">Italy</div>
+    </div>
+  </div>
 </section>
 
+<!-- USP BAR -->
+<div class="usp-bar">
+  <div class="usp-item">
+    <div class="usp-icon">🌿</div>
+    <div class="usp-text">Plantagen-Schokolade<br>aus besten Herkünften</div>
+  </div>
+  <div class="usp-item">
+    <div class="usp-icon">♻</div>
+    <div class="usp-text">Nachhaltig &<br>Fair handeln</div>
+  </div>
+  <div class="usp-item">
+    <div class="usp-icon">✦</div>
+    <div class="usp-text">Handwerklich<br>seit 1918</div>
+  </div>
+  <div class="usp-item">
+    <div class="usp-icon">🚚</div>
+    <div class="usp-text">Kostenloser Versand<br>ab 49 € (DE)</div>
+  </div>
+</div>
 
+<!-- PRODUCTS SECTION -->
+<div class="section-header">
+  <h2>Fünf Sorten. Fünf Welten.</h2>
+  <p>Jede Sorte erzählt die Geschichte eines Landes – inspiriert von authentischen Rezepten und traditionellen Zutaten.</p>
+</div>
+
+<div class="product-grid">
+  <!-- Card 1 - Deutschland -->
+  <div class="product-card">
+    <div class="product-img-wrap">
+      <div class="img-placeholder p1">🍫</div>
+    </div>
+    <div class="product-info">
+      <div class="product-origin">Deutschland</div>
+      <div class="product-name">Schokokuss</div>
+      <p class="product-desc">Zarter Schaumzucker in feiner Edelvolmilch-Schokolade.</p>
+      <a href="#" class="btn-outline-white">Mehr erfahren</a>
+    </div>
+  </div>
+  <!-- Card 2 - USA -->
+  <div class="product-card">
+    <div class="product-img-wrap">
+      <div class="img-placeholder p2">🍪</div>
+    </div>
+    <div class="product-info">
+      <div class="product-origin">USA</div>
+      <div class="product-name">Cookie Dough</div>
+      <p class="product-desc">Cremiger Cookie-Dough mit Schokolostückchen, umhüllt von feinster Schokolade.</p>
+      <a href="#" class="btn-outline-white">Mehr erfahren</a>
+    </div>
+  </div>
+  <!-- Card 3 - Taiwan -->
+  <div class="product-card">
+    <div class="product-img-wrap">
+      <div class="img-placeholder p3">🧋</div>
+    </div>
+    <div class="product-info">
+      <div class="product-origin">Taiwan</div>
+      <div class="product-name">Boba</div>
+      <p class="product-desc">Bubble Tea trifft Schokolade: Zarter Milchtee mit Tapioka-Perlen.</p>
+      <a href="#" class="btn-outline-white">Mehr erfahren</a>
+    </div>
+  </div>
+  <!-- Card 4 - Venezuela -->
+  <div class="product-card">
+    <div class="product-img-wrap">
+      <div class="img-placeholder p4">🥥</div>
+    </div>
+    <div class="product-info">
+      <div class="product-origin">Venezuela</div>
+      <div class="product-name">Majarete</div>
+      <p class="product-desc">Exotische Kokosnote mit Mais – inspiriert vom traditionellen Dessert.</p>
+      <a href="#" class="btn-outline-white">Mehr erfahren</a>
+    </div>
+  </div>
+  <!-- Card 5 - Italien -->
+  <div class="product-card">
+    <div class="product-img-wrap">
+      <div class="img-placeholder p5">🍪</div>
+    </div>
+    <div class="product-info">
+      <div class="product-origin">Italien</div>
+      <div class="product-name">Amaretti</div>
+      <p class="product-desc">Feine Mandel mit einem Hauch Amaretto – ein Stück Italien.</p>
+      <a href="#" class="btn-outline-white">Mehr erfahren</a>
+    </div>
+  </div>
+</div>
+
+<!-- GOLDEN TICKET BANNER -->
+<section class="golden-ticket">
+  <div class="ticket-visual">
+    <div class="ticket-card">
+      <div class="ticket-title">Golden<br>Ticket</div>
+      <div class="ticket-icon">✈</div>
+    </div>
+  </div>
+  <div class="ticket-text">
+    <div class="ticket-eyebrow">Dein Ticket in die Welt</div>
+    <h2 class="ticket-title-big">Gewinne eine Reise in<br>eines unserer Genuss-Länder!</h2>
+    <p class="ticket-desc">In 20 Packungen unserer Origins Collection versteckt sich ein Golden Ticket. Freu dich auf eine Traumreise inklusive Flug und Hotel – in Kooperation mit Lufthansa.</p>
+    <a href="#" class="btn-outline-gold">Mehr erfahren</a>
+    <div class="carousel-dots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTION FORMATS -->
+<section class="formats-section">
+  <div class="section-header" style="padding-top:0">
+    <h2>Entdecke die Kollektion</h2>
+    <p>Drei Formate. Fünf Geschmackswelten.<br>Für jeden Moment der richtige Genuss.</p>
+  </div>
+  <div class="formats-grid">
+    <div class="format-item">
+      <div class="format-icon">
+        <svg width="32" height="48" viewBox="0 0 32 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="24" height="40" rx="3"/><line x1="4" y1="16" x2="28" y2="16"/><line x1="4" y1="32" x2="28" y2="32"/></svg>
+      </div>
+      <div class="format-name">Mini</div>
+      <div class="format-desc">Für den kleinen Genuss zwischendurch.</div>
+    </div>
+    <div class="format-item">
+      <div class="format-icon">
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="40" height="40" rx="2"/><line x1="2" y1="15" x2="42" y2="15"/><line x1="2" y1="29" x2="42" y2="29"/><line x1="15" y1="2" x2="15" y2="42"/><line x1="29" y1="2" x2="29" y2="42"/></svg>
+      </div>
+      <div class="format-name">Tafel</div>
+      <div class="format-desc">Für genussvolle Auszeiten zu Hause.</div>
+    </div>
+    <div class="format-item">
+      <div class="format-icon">
+        <svg width="16" height="52" viewBox="0 0 16 52" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="48" rx="6"/><line x1="2" y1="18" x2="14" y2="18"/><line x1="2" y1="34" x2="14" y2="34"/></svg>
+      </div>
+      <div class="format-name">Stick</div>
+      <div class="format-desc">Für unterwegs – immer dabei.</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL GRID -->
+<div class="editorial-grid">
+  <div class="editorial-card">
+    <div class="ed-bg-placeholder e1">🌿</div>
+    <div class="ed-content">
+      <div class="ed-title">Unsere Plantagen</div>
+      <div class="ed-subtitle">Beste Bohnen aus ausgewählten Herkünften.</div>
+      <a href="#" class="ed-link">Mehr erfahren</a>
+    </div>
+  </div>
+  <div class="editorial-card">
+    <div class="ed-bg-placeholder e2">🏛</div>
+    <div class="ed-content">
+      <div class="ed-title">Schokoladenhaus Berlin</div>
+      <div class="ed-subtitle">Besuche unser Schokoladenhaus am Gendarmenmarkt.</div>
+      <a href="#" class="ed-link">Mehr erfahren</a>
+    </div>
+  </div>
+  <div class="editorial-card">
+    <div class="ed-bg-placeholder e3">✦</div>
+    <div class="ed-content">
+      <div class="ed-title">Handwerk & Leidenschaft</div>
+      <div class="ed-subtitle">Mit Liebe zum Detail – seit über 100 Jahren.</div>
+      <a href="#" class="ed-link">Mehr erfahren</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">Rausch</div>
+      <div class="footer-tagline">Schokolade seit 1918</div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">Alle Produkte</a></li>
+        <li><a href="#">Neuheiten</a></li>
+        <li><a href="#">Geschenkideen</a></li>
+        <li><a href="#">B-Ware</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Service</h4>
+      <ul>
+        <li><a href="#">Versand & Zahlung</a></li>
+        <li><a href="#">Häufige Fragen</a></li>
+        <li><a href="#">Kontakt</a></li>
+        <li><a href="#">Rückgabe</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Rausch</h4>
+      <ul>
+        <li><a href="#">Unsere Geschichte</a></li>
+        <li><a href="#">Manufaktur</a></li>
+        <li><a href="#">Nachhaltigkeit</a></li>
+        <li><a href="#">Karriere</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <p style="font-size:11px;color:rgba(255,255,255,0.45);font-weight:300;line-height:1.5;margin-bottom:4px;">Jetzt anmelden und 10 % Willkommensrabatt sichern.</p>
+      <div class="newsletter-input-wrap">
+        <input type="email" class="newsletter-input" placeholder="E-Mail-Adresse">
+        <button class="newsletter-btn">→</button>
+      </div>
+      <div style="margin-top:20px;">
+        <div style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:10px;font-weight:600;">Folge uns</div>
+        <div class="social-links">
+          <a href="#" class="social-link">&#x1F4F7;</a>
+          <a href="#" class="social-link">f</a>
+          <a href="#" class="social-link">▶</a>
+          <a href="#" class="social-link">P</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-left">© Rausch GmbH & Co. KG</div>
+    <div class="footer-bottom-links">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+      <a href="#">AGB</a>
+    </div>
+  </div>
+</footer>
 
 <script>
-function loginDemo(){
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+  // Carousel dots interaction
+  document.querySelectorAll('.dot').forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+      dot.classList.add('active');
+    });
+  });
 
-    if(email && password){
-        document.getElementById("message").innerHTML =
-            "✓ Demo-Anmeldung erfolgreich";
-    }else{
-        document.getElementById("message").innerHTML =
-            "Bitte alle Felder ausfüllen.";
+  // Subtle parallax on hero
+  window.addEventListener('scroll', () => {
+    const hero = document.querySelector('.hero');
+    const offset = window.scrollY;
+    if (hero) {
+      hero.style.backgroundPositionY = `${offset * 0.3}px`;
     }
-}
-
-function redeemCode(){
-    const code = document.getElementById("promoCode").value.trim();
-
-    if(code === "SKYWINGS2026"){
-        document.getElementById("message").innerHTML =
-            "✓ Aktionscode erfolgreich eingelöst!";
-    }else{
-        document.getElementById("message").innerHTML =
-            "✗ Ungültiger Aktionscode.";
-    }
-}
+  });
 </script>
-
 </body>
 </html>
