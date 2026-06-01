@@ -1,25 +1,798 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Discover the World – Golden Ticket</title>
-<link rel="stylesheet" href="style.css">
+<title>Discover the World – Golden Ticket Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --gold:#C9A84C;
+  --gold-light:#E8C96A;
+  --gold-pale:#F5E6B8;
+  --gold-dim:#8B6914;
+  --choc:#1A0A00;
+  --choc-mid:#2D1500;
+  --choc-warm:#3D1E00;
+  --choc-soft:#6B3A1F;
+  --cream:#F7F0E6;
+  --cream-dark:#EDE0CC;
+  --lh-yellow:#FFCC00;
+  --lh-blue:#05164D;
+  --white:#FFFFFF;
+  --text-muted:rgba(247,240,230,0.6);
+  --serif:'Playfair Display',serif;
+  --serif2:'Cormorant Garamond',serif;
+  --sans:'Jost',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--choc);
+  color:var(--cream);
+  font-family:var(--sans);
+  font-weight:300;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+.page{display:none;min-height:100vh;position:relative;}
+.page.active{display:block;}
+.page-enter{animation:fadeSlideIn 0.8s cubic-bezier(0.16,1,0.3,1) forwards;}
+@keyframes fadeSlideIn{
+  from{opacity:0;transform:translateY(32px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.brand-bar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 48px;
+  background:linear-gradient(to bottom,rgba(26,10,0,0.95) 0%,rgba(26,10,0,0) 100%);
+}
+.logo-rausch{
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:3px;
+  color:var(--gold);
+  text-transform:uppercase;
+}
+.logo-rausch span{font-weight:400;color:var(--cream);}
+.logo-lh{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--sans);font-size:12px;font-weight:500;
+  letter-spacing:2px;text-transform:uppercase;color:var(--cream);opacity:0.8;
+}
+.lh-circle{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--lh-yellow);
+  display:flex;align-items:center;justify-content:center;
+}
+.lh-crane{
+  font-size:18px;line-height:1;
+  color:var(--lh-blue);
+  font-weight:900;
+  font-family:serif;
+}
+.divider-gold{
+  width:60px;height:1px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);
+  margin:20px auto;
+}
+.divider-gold-lg{
+  width:120px;height:1px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);
+  margin:28px auto;
+}
+
+/* PAGE 1 */
+#page1{background:var(--choc);position:relative;overflow:hidden;}
+.hero1{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:120px 24px 80px;
+  position:relative;
+  text-align:center;
+}
+.hero1-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(61,30,0,0.8) 0%, transparent 60%),
+    linear-gradient(180deg, var(--choc-mid) 0%, var(--choc) 100%);
+}
+.hero1-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.particle{
+  position:absolute;
+  width:2px;height:2px;
+  background:var(--gold);
+  border-radius:50%;
+  animation:floatParticle linear infinite;
+  opacity:0;
+}
+@keyframes floatParticle{
+  0%{opacity:0;transform:translateY(100vh) rotate(0deg);}
+  10%{opacity:0.6;}
+  90%{opacity:0.3;}
+  100%{opacity:0;transform:translateY(-20px) rotate(720deg);}
+}
+.golden-ticket-visual{
+  position:relative;
+  width:340px;max-width:90vw;
+  margin:0 auto 48px;
+  animation:ticketFloat 4s ease-in-out infinite;
+}
+@keyframes ticketFloat{
+  0%,100%{transform:translateY(0) rotate(-1deg);}
+  50%{transform:translateY(-12px) rotate(1deg);}
+}
+.ticket-card{
+  background:linear-gradient(135deg, #8B6914 0%, #C9A84C 25%, #F5E6B8 50%, #E8C96A 75%, #C9A84C 100%);
+  border-radius:16px;
+  padding:28px 32px;
+  box-shadow:0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,168,76,0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+  position:relative;overflow:hidden;
+}
+.ticket-card::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(255,255,255,0.03) 10px,rgba(255,255,255,0.03) 20px);
+  border-radius:16px;
+}
+.ticket-shine{
+  position:absolute;top:-50%;left:-50%;
+  width:200%;height:200%;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.15) 50%,transparent 60%);
+  animation:ticketShine 4s ease-in-out infinite;
+}
+@keyframes ticketShine{0%,100%{transform:translateX(-100%);}50%{transform:translateX(100%);}}
+.ticket-inner{position:relative;z-index:1;}
+.ticket-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.ticket-brand{font-family:var(--serif);font-size:11px;font-weight:700;letter-spacing:3px;color:var(--choc);text-transform:uppercase;}
+.ticket-star{color:var(--choc);font-size:16px;}
+.ticket-main{text-align:center;padding:12px 0;}
+.ticket-title{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--choc);line-height:1.2;}
+.ticket-sub{font-size:9px;letter-spacing:3px;color:var(--choc-soft);text-transform:uppercase;margin-top:4px;}
+.ticket-code{
+  background:rgba(26,10,0,0.15);
+  border-radius:8px;
+  padding:8px 16px;
+  margin-top:14px;
+  font-family:monospace;font-size:14px;font-weight:700;
+  color:var(--choc);letter-spacing:4px;
+}
+.ticket-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:14px;}
+.ticket-lh{font-size:9px;letter-spacing:2px;color:var(--choc-soft);text-transform:uppercase;}
+.ticket-dots{width:20px;height:20px;border-radius:50%;background:rgba(26,10,0,0.2);}
+.hero1-eyebrow{
+  font-size:10px;letter-spacing:5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;
+  animation:fadeSlideIn 0.6s 0.2s both;
+}
+.hero1-title{
+  font-family:var(--serif);
+  font-size:clamp(48px,7vw,80px);
+  font-weight:600;
+  line-height:1.05;
+  color:var(--gold-light);
+  margin-bottom:16px;
+  animation:fadeSlideIn 0.6s 0.3s both;
+}
+.hero1-sub{
+  font-family:var(--serif2);
+  font-size:clamp(18px,2.5vw,24px);
+  font-weight:300;
+  color:var(--cream);
+  margin-bottom:20px;
+  animation:fadeSlideIn 0.6s 0.4s both;
+}
+.hero1-desc{
+  font-size:14px;line-height:1.8;
+  color:var(--text-muted);
+  max-width:520px;margin:0 auto;
+  animation:fadeSlideIn 0.6s 0.5s both;
+}
+.form-section{
+  max-width:480px;width:100%;
+  margin:0 auto;
+  background:rgba(45,21,0,0.6);
+  border:1px solid rgba(201,168,76,0.2);
+  border-radius:20px;
+  padding:40px;
+  backdrop-filter:blur(12px);
+  animation:fadeSlideIn 0.6s 0.6s both;
+}
+.form-title{
+  font-family:var(--serif);font-size:20px;font-weight:500;
+  color:var(--cream);margin-bottom:28px;text-align:center;
+}
+.form-group{margin-bottom:20px;}
+.form-label{
+  display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:8px;
+}
+.form-input{
+  width:100%;
+  background:rgba(26,10,0,0.5);
+  border:1px solid rgba(201,168,76,0.25);
+  border-radius:10px;
+  padding:14px 18px;
+  color:var(--cream);
+  font-family:var(--sans);font-size:14px;font-weight:300;
+  outline:none;
+  transition:border-color 0.3s,box-shadow 0.3s;
+}
+.form-input:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(201,168,76,0.1);
+}
+.form-input::placeholder{color:rgba(247,240,230,0.25);}
+.btn-verify{
+  width:100%;
+  background:linear-gradient(135deg,var(--gold-dim),var(--gold),var(--gold-light));
+  border:none;border-radius:10px;
+  padding:16px 32px;
+  font-family:var(--sans);font-size:12px;font-weight:500;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--choc);
+  cursor:pointer;
+  transition:transform 0.2s,box-shadow 0.2s;
+  margin-top:8px;
+  position:relative;overflow:hidden;
+}
+.btn-verify:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(201,168,76,0.3);}
+.btn-verify:active{transform:translateY(0);}
+.btn-verify::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to right,transparent,rgba(255,255,255,0.15),transparent);
+  transform:translateX(-100%);transition:transform 0.5s;
+}
+.btn-verify:hover::after{transform:translateX(100%);}
+.error-msg{
+  display:none;
+  background:rgba(162,60,30,0.2);
+  border:1px solid rgba(162,60,30,0.4);
+  border-radius:8px;
+  padding:12px 16px;
+  font-size:13px;color:#F09575;
+  text-align:center;margin-top:16px;
+  animation:shake 0.4s ease-in-out;
+}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-8px);}75%{transform:translateX(8px);}}
+.story-section{
+  padding:100px 48px;
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+}
+.story-text .eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.story-text h2{font-family:var(--serif);font-size:42px;font-weight:500;color:var(--cream);line-height:1.2;margin-bottom:20px;}
+.story-text p{font-size:14px;line-height:1.9;color:var(--text-muted);margin-bottom:16px;}
+.story-visual{
+  height:400px;border-radius:20px;overflow:hidden;
+  background:linear-gradient(135deg,var(--choc-warm),var(--choc-mid));
+  position:relative;border:1px solid rgba(201,168,76,0.15);
+}
+.story-visual-inner{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:16px;
+}
+.collection-badge{
+  background:rgba(201,168,76,0.1);
+  border:1px solid rgba(201,168,76,0.3);
+  border-radius:12px;padding:20px 28px;text-align:center;
+}
+.collection-badge-title{font-family:var(--serif);font-size:24px;color:var(--gold-light);font-weight:600;}
+.collection-badge-sub{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-top:4px;}
+
+/* PAGE 2 */
+#page2{background:var(--choc);}
+.page2-hero{
+  min-height:45vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:160px 24px 80px;
+  text-align:center;
+  position:relative;
+  background:linear-gradient(180deg,var(--choc-mid) 0%,var(--choc) 100%);
+}
+.page2-hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(201,168,76,0.1),transparent);
+}
+.section-eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.section-title{font-family:var(--serif);font-size:clamp(36px,5vw,60px);font-weight:600;color:var(--cream);line-height:1.1;margin-bottom:16px;}
+.section-desc{font-size:14px;line-height:1.8;color:var(--text-muted);max-width:560px;margin:0 auto;}
+.destinations-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:2px;
+  max-width:1400px;margin:0 auto;
+}
+.dest-card{
+  position:relative;height:520px;overflow:hidden;cursor:pointer;
+}
+.dest-bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.dest-card:hover .dest-bg{transform:scale(1.08);}
+.dest-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(26,10,0,0.95) 0%,rgba(26,10,0,0.4) 50%,rgba(26,10,0,0.1) 100%);
+  transition:background 0.4s;
+}
+.dest-card:hover .dest-overlay{background:linear-gradient(to top,rgba(26,10,0,0.98) 0%,rgba(26,10,0,0.5) 60%,rgba(26,10,0,0.2) 100%);}
+.dest-content{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:32px 28px;
+  transform:translateY(60px);
+  transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.dest-card:hover .dest-content{transform:translateY(0);}
+.dest-country{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.dest-name{font-family:var(--serif);font-size:32px;font-weight:600;color:var(--cream);line-height:1.1;margin-bottom:8px;}
+.dest-flavor-row{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.dest-flavor-badge{
+  background:rgba(201,168,76,0.15);
+  border:1px solid rgba(201,168,76,0.3);
+  border-radius:20px;padding:4px 14px;
+  font-size:11px;letter-spacing:1px;color:var(--gold-light);
+}
+.dest-desc{
+  font-size:13px;line-height:1.7;color:var(--text-muted);
+  margin-bottom:20px;
+  opacity:0;transform:translateY(12px);
+  transition:opacity 0.4s 0.1s,transform 0.4s 0.1s;
+}
+.dest-card:hover .dest-desc{opacity:1;transform:translateY(0);}
+.btn-select{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,var(--gold-dim),var(--gold));
+  border:none;border-radius:8px;
+  padding:12px 24px;
+  font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;
+  color:var(--choc);cursor:pointer;
+  opacity:0;transform:translateY(12px);
+  transition:opacity 0.4s 0.15s,transform 0.4s 0.15s,box-shadow 0.2s;
+}
+.dest-card:hover .btn-select{opacity:1;transform:translateY(0);}
+.btn-select:hover{box-shadow:0 8px 24px rgba(201,168,76,0.4);}
+.bg-germany{background-color:#1a2a3d;background-image:radial-gradient(ellipse at 50% 100%,#2a3a4d 0%,transparent 60%),linear-gradient(180deg,#0d1a2e 0%,#1e2d40 40%,#2a3a50 70%,#1a2a3d 100%);}
+.bg-usa{background-color:#1a1522;background-image:linear-gradient(180deg,#0a0a18 0%,#1a1030 40%,#2a1840 70%,#1a1a2a 100%);}
+.bg-taiwan{background-color:#0d1a1d;background-image:linear-gradient(180deg,#071012 0%,#0d1e20 40%,#122028 70%,#0a1618 100%);}
+.bg-venezuela{background-color:#0d1a0a;background-image:linear-gradient(180deg,#071408 0%,#0d1e0a 40%,#1a2e10 70%,#0d1a0a 100%);}
+.bg-italy{background-color:#1a1008;background-image:linear-gradient(180deg,#120a04 0%,#1e1008 40%,#2e1a0a 70%,#1a1008 100%);}
+
+/* PAGE 3 */
+#page3{
+  background:var(--choc);
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:120px 24px 80px;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.page3-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 30%,rgba(201,168,76,0.08),transparent),
+    radial-gradient(ellipse 60% 40% at 20% 80%,rgba(61,30,0,0.5),transparent),
+    radial-gradient(ellipse 60% 40% at 80% 80%,rgba(61,30,0,0.5),transparent);
+}
+.confetti-ring{
+  position:absolute;top:50%;left:50%;
+  width:600px;height:600px;margin:-300px 0 0 -300px;
+  border-radius:50%;border:1px solid rgba(201,168,76,0.08);
+  animation:ringExpand 2s ease-out forwards;
+}
+.confetti-ring:nth-child(2){animation-delay:0.3s;width:800px;height:800px;margin:-400px 0 0 -400px;}
+.confetti-ring:nth-child(3){animation-delay:0.6s;width:1000px;height:1000px;margin:-500px 0 0 -500px;}
+@keyframes ringExpand{
+  from{opacity:0;transform:scale(0.2);}
+  50%{opacity:0.4;}
+  to{opacity:0;transform:scale(1);}
+}
+.success-icon{
+  width:80px;height:80px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold-dim),var(--gold));
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 32px;font-size:36px;
+  box-shadow:0 16px 48px rgba(201,168,76,0.3);
+  animation:successPop 0.6s 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes successPop{from{opacity:0;transform:scale(0.5);}to{opacity:1;transform:scale(1);}}
+.page3-title{
+  font-family:var(--serif);font-size:clamp(36px,5vw,56px);font-weight:600;
+  color:var(--gold-light);line-height:1.1;margin-bottom:16px;
+  animation:fadeSlideIn 0.6s 0.4s both;
+}
+.page3-sub{
+  font-family:var(--serif2);font-size:clamp(18px,2.5vw,22px);
+  font-weight:300;color:var(--cream);margin-bottom:16px;
+  animation:fadeSlideIn 0.6s 0.5s both;
+}
+.page3-text{
+  font-size:14px;line-height:1.8;color:var(--text-muted);
+  max-width:520px;margin:0 auto 40px;
+  animation:fadeSlideIn 0.6s 0.6s both;
+}
+.selection-summary{
+  display:flex;gap:16px;align-items:stretch;justify-content:center;
+  flex-wrap:wrap;margin-bottom:40px;
+  animation:fadeSlideIn 0.6s 0.7s both;
+}
+.summary-card{
+  background:rgba(45,21,0,0.6);
+  border:1px solid rgba(201,168,76,0.2);
+  border-radius:16px;padding:24px 28px;
+  min-width:180px;text-align:center;
+}
+.summary-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.summary-value{font-family:var(--serif);font-size:22px;color:var(--cream);font-weight:500;}
+.summary-flavor{font-size:12px;color:var(--text-muted);margin-top:4px;}
+.btn-return{
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;
+  border:1px solid rgba(201,168,76,0.4);
+  border-radius:10px;padding:14px 32px;
+  font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);cursor:pointer;
+  transition:background 0.3s,border-color 0.3s,transform 0.2s;
+  animation:fadeSlideIn 0.6s 0.8s both;
+}
+.btn-return:hover{background:rgba(201,168,76,0.08);border-color:var(--gold);transform:translateY(-2px);}
+.logos-pair{
+  display:flex;align-items:center;gap:32px;justify-content:center;
+  margin-top:40px;animation:fadeSlideIn 0.6s 0.9s both;
+}
+.logo-divider{width:1px;height:40px;background:rgba(201,168,76,0.3);}
+
+@media(max-width:768px){
+  .brand-bar{padding:16px 24px;}
+  .story-section{grid-template-columns:1fr;gap:40px;padding:60px 24px;}
+  .destinations-grid{grid-template-columns:1fr;}
+  .dest-card{height:380px;}
+  .dest-content{transform:translateY(0);}
+  .dest-desc{opacity:1;transform:none;}
+  .btn-select{opacity:1;transform:none;}
+  .form-section{padding:28px 24px;}
+}
+</style>
 </head>
 <body>
-<section class="hero">
-<div class="overlay">
-<h1>Discover the World</h1>
-<p>Golden Ticket Edition · Rausch × Lufthansa</p>
-<div class="card">
-<h2>🎫 Ticket verifizieren</h2>
-<input type="email" id="email" placeholder="E-Mail-Adresse">
-<input type="text" id="code" placeholder="Golden Ticket Code">
-<button onclick="verifyTicket()">Ticket prüfen</button>
-<p id="error"></p>
+
+<!-- BRAND BAR -->
+<div class="brand-bar">
+  <div class="logo-rausch">Rausch<span> Chocolate</span></div>
+  <div class="logo-lh">
+    <div class="lh-circle"><div class="lh-crane">✈</div></div>
+    Lufthansa
+  </div>
 </div>
+
+<!-- PAGE 1: VERIFICATION -->
+<div id="page1" class="page active">
+  <div class="hero1">
+    <div class="hero1-bg"></div>
+    <div class="hero1-particles" id="particles"></div>
+    <div style="position:relative;z-index:2;width:100%;">
+      <div class="golden-ticket-visual">
+        <div class="ticket-card">
+          <div class="ticket-shine"></div>
+          <div class="ticket-inner">
+            <div class="ticket-top">
+              <span class="ticket-brand">Rausch × Lufthansa</span>
+              <span class="ticket-star">✦</span>
+            </div>
+            <div class="ticket-main">
+              <div class="ticket-title">Golden Ticket</div>
+              <div class="ticket-sub">Discover the World Edition</div>
+            </div>
+            <div class="ticket-code">✦ GOLDEN ✦</div>
+            <div class="ticket-bottom">
+              <span class="ticket-lh">Lufthansa Partner</span>
+              <div class="ticket-dots"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero1-eyebrow">Discover the World — Golden Ticket Edition</div>
+      <h1 class="hero1-title">Congratulations!</h1>
+      <p class="hero1-sub">You have discovered a Golden Ticket.</p>
+      <p class="hero1-desc">You now have the opportunity to win a dream trip to one of the five countries featured in our Origins Collection, in exclusive partnership with Lufthansa.</p>
+      <div class="divider-gold-lg"></div>
+      <div class="form-section">
+        <h2 class="form-title">Verify Your Golden Ticket</h2>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" id="email-input" placeholder="your@email.com" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Golden Ticket Code</label>
+          <input type="text" class="form-input" id="code-input" placeholder="XXXX XXXX XXXX" autocomplete="off">
+        </div>
+        <button class="btn-verify" id="verify-btn" onclick="verifyTicket()">Verify Ticket</button>
+        <div class="error-msg" id="error-msg">The ticket code or email address could not be verified.</div>
+      </div>
+      <div class="logos-pair" style="margin-top:48px;animation:fadeSlideIn 0.6s 0.9s both;">
+        <div class="logo-rausch" style="font-size:18px;">Rausch<span> Chocolate</span></div>
+        <div class="logo-divider"></div>
+        <div class="logo-lh" style="font-size:11px;opacity:0.6;">
+          <div class="lh-circle" style="width:28px;height:28px;"><div class="lh-crane" style="font-size:14px;">✈</div></div>
+          Lufthansa
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Story Section -->
+  <section class="story-section">
+    <div class="story-text">
+      <div class="eyebrow">The Origins Collection</div>
+      <h2>Five Continents. Five Flavours. One Golden Journey.</h2>
+      <p>Each chocolate in our Origins Collection is crafted from single-origin cacao sourced directly from the world's finest growing regions. From the Caribbean coast of Venezuela to the mountains of Taiwan, every piece tells a story of place and terroir.</p>
+      <p>In partnership with Lufthansa, we invite you to experience these origins not just on your palate — but in person. The Golden Ticket holder will embark on an unforgettable first-class journey to the source of their chosen flavour.</p>
+    </div>
+    <div class="story-visual">
+      <div class="story-visual-inner">
+        <div class="collection-badge">
+          <div class="collection-badge-title">Origins Collection</div>
+          <div class="collection-badge-sub">Five Countries · Five Flavours</div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:280px;">
+          <span style="font-size:11px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);border-radius:20px;padding:4px 12px;color:var(--gold-light);">🇩🇪 Schokokuss</span>
+          <span style="font-size:11px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);border-radius:20px;padding:4px 12px;color:var(--gold-light);">🇺🇸 Cookie Dough</span>
+          <span style="font-size:11px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);border-radius:20px;padding:4px 12px;color:var(--gold-light);">🇹🇼 Boba</span>
+          <span style="font-size:11px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);border-radius:20px;padding:4px 12px;color:var(--gold-light);">🇻🇪 Majarete</span>
+          <span style="font-size:11px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);border-radius:20px;padding:4px 12px;color:var(--gold-light);">🇮🇹 Amaretti</span>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
-</section>
-<script src="script.js"></script>
+
+<!-- PAGE 2: DESTINATIONS -->
+<div id="page2" class="page">
+  <section class="page2-hero">
+    <div style="position:relative;z-index:1;">
+      <div class="section-eyebrow">Golden Ticket Verified ✦</div>
+      <h1 class="section-title">Choose Your<br>Dream Destination</h1>
+      <div class="divider-gold"></div>
+      <p class="section-desc">Your Golden Ticket has been successfully verified. Select the destination you would like to win. Each destination pairs a unique Rausch flavour with an unforgettable Lufthansa journey.</p>
+    </div>
+  </section>
+
+  <div class="destinations-grid" id="dest-grid">
+
+    <!-- GERMANY -->
+    <div class="dest-card" onclick="selectDestination('Germany','Schokokuss','Berlin',this)">
+      <div class="dest-bg bg-germany">
+        <svg style="position:absolute;bottom:80px;left:0;width:100%;opacity:0.2;" viewBox="0 0 400 120" preserveAspectRatio="none">
+          <path d="M0,120 L0,80 L10,80 L10,60 L20,60 L20,55 L30,55 L30,40 L35,40 L35,20 L38,20 L38,15 L42,15 L42,20 L45,20 L45,40 L50,40 L50,55 L60,55 L60,60 L70,60 L70,65 L80,65 L80,55 L85,55 L85,30 L88,30 L88,10 L91,10 L91,30 L94,30 L94,55 L100,55 L100,65 L110,65 L110,60 L120,60 L120,70 L130,70 L130,50 L135,50 L135,45 L140,45 L140,50 L145,50 L145,55 L155,55 L155,65 L165,65 L165,60 L175,60 L175,70 L185,70 L185,55 L190,55 L190,50 L195,50 L195,55 L200,55 L200,70 L210,70 L210,65 L220,65 L220,60 L230,60 L230,65 L240,65 L240,50 L245,45 L250,50 L255,50 L255,65 L265,65 L265,60 L275,60 L275,70 L285,70 L285,55 L290,50 L295,55 L300,55 L300,70 L310,70 L310,65 L320,65 L320,60 L330,60 L330,65 L340,65 L340,55 L345,55 L345,60 L350,60 L350,70 L360,70 L360,60 L370,60 L370,55 L380,55 L380,65 L390,65 L390,70 L400,70 L400,120 Z" fill="rgba(201,168,76,0.3)"/>
+        </svg>
+      </div>
+      <div class="dest-overlay"></div>
+      <div class="dest-content">
+        <div class="dest-country">Germany · Europe</div>
+        <div class="dest-name">Berlin</div>
+        <div class="dest-flavor-row"><span class="dest-flavor-badge">✦ Schokokuss</span></div>
+        <p class="dest-desc">The city that never stops reinventing itself. From the Brandenburg Gate to the vibrant street art of Kreuzberg — Berlin is a city of contrasts and endless discovery.</p>
+        <button class="btn-select">Select Destination <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- USA -->
+    <div class="dest-card" onclick="selectDestination('USA','Cookie Dough','New York',this)">
+      <div class="dest-bg bg-usa">
+        <svg style="position:absolute;bottom:80px;left:0;width:100%;opacity:0.2;" viewBox="0 0 400 120" preserveAspectRatio="none">
+          <path d="M0,120 L0,70 L5,70 L5,30 L8,30 L8,5 L11,5 L11,30 L14,30 L14,70 L20,70 L20,40 L23,40 L23,10 L27,10 L27,5 L31,5 L31,10 L35,10 L35,40 L40,40 L40,50 L45,50 L45,30 L48,30 L48,15 L52,15 L52,30 L55,30 L55,50 L60,50 L60,60 L65,60 L65,45 L68,45 L68,20 L72,20 L72,45 L75,45 L75,60 L80,60 L80,55 L85,55 L85,35 L88,35 L88,20 L92,20 L92,35 L95,35 L95,55 L100,55 L100,60 L108,60 L108,45 L112,45 L112,25 L116,25 L116,45 L120,45 L120,60 L130,60 L130,65 L140,65 L140,55 L145,55 L145,40 L149,40 L149,30 L153,30 L153,40 L157,40 L157,55 L162,55 L162,65 L170,65 L170,60 L180,60 L180,55 L185,55 L185,35 L189,35 L189,20 L193,20 L193,35 L197,35 L197,55 L200,55 L200,60 L210,60 L210,65 L220,65 L220,60 L225,60 L225,50 L229,50 L229,35 L233,35 L233,50 L237,50 L237,60 L242,60 L242,65 L250,65 L250,60 L260,60 L260,55 L265,55 L265,40 L269,40 L269,25 L273,25 L273,40 L277,40 L277,55 L282,55 L282,60 L290,60 L290,65 L300,65 L300,60 L310,60 L310,55 L315,55 L315,40 L319,40 L319,30 L323,30 L323,40 L327,40 L327,55 L332,55 L332,60 L340,60 L340,65 L350,65 L350,60 L360,60 L360,55 L365,55 L365,45 L369,45 L369,30 L373,30 L373,45 L377,45 L377,55 L382,55 L382,60 L390,60 L390,65 L400,65 L400,120 Z" fill="rgba(201,168,76,0.3)"/>
+        </svg>
+      </div>
+      <div class="dest-overlay"></div>
+      <div class="dest-content">
+        <div class="dest-country">USA · Americas</div>
+        <div class="dest-name">New York</div>
+        <div class="dest-flavor-row"><span class="dest-flavor-badge">✦ Cookie Dough</span></div>
+        <p class="dest-desc">The city that defines modern culture. From the iconic Manhattan skyline to the hidden gems of Brooklyn — New York is the world's most electrifying metropolis.</p>
+        <button class="btn-select">Select Destination <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- TAIWAN -->
+    <div class="dest-card" onclick="selectDestination('Taiwan','Boba','Taipei',this)">
+      <div class="dest-bg bg-taiwan">
+        <svg style="position:absolute;bottom:80px;left:0;width:100%;opacity:0.2;" viewBox="0 0 400 140" preserveAspectRatio="none">
+          <path d="M180,140 L180,130 L170,130 L170,120 L168,120 L168,110 L172,110 L172,100 L170,95 L174,90 L172,85 L176,80 L174,75 L178,70 L176,65 L180,60 L178,55 L182,50 L180,45 L184,40 L182,35 L186,30 L188,20 L190,10 L192,5 L194,10 L196,20 L198,30 L200,35 L198,40 L202,45 L200,50 L204,55 L202,60 L206,65 L204,70 L208,75 L206,80 L210,85 L208,90 L212,95 L210,100 L214,105 L212,110 L216,115 L218,120 L218,125 L216,130 L230,130 L230,140 Z M60,140 L60,110 L80,110 L80,100 L90,100 L90,90 L100,90 L100,85 L110,85 L110,80 L120,80 L120,75 L130,75 L130,80 L140,80 L140,90 L150,90 L150,100 L155,100 L155,110 L165,110 L165,120 L168,120 L168,130 L160,130 L160,140 Z" fill="rgba(201,168,76,0.3)"/>
+        </svg>
+      </div>
+      <div class="dest-overlay"></div>
+      <div class="dest-content">
+        <div class="dest-country">Taiwan · Asia</div>
+        <div class="dest-name">Taipei</div>
+        <div class="dest-flavor-row"><span class="dest-flavor-badge">✦ Boba</span></div>
+        <p class="dest-desc">Where ancient temples meet futuristic towers. Taipei's night markets, breathtaking mountain trails, and legendary food scene make it Asia's most captivating destination.</p>
+        <button class="btn-select">Select Destination <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- VENEZUELA -->
+    <div class="dest-card" onclick="selectDestination('Venezuela','Majarete','Caribbean Coast',this)">
+      <div class="dest-bg bg-venezuela">
+        <svg style="position:absolute;bottom:80px;left:0;width:100%;opacity:0.2;" viewBox="0 0 400 80" preserveAspectRatio="none">
+          <path d="M0,80 L0,50 Q20,30 40,45 Q60,35 80,40 Q100,45 120,30 Q140,20 160,35 Q180,45 200,30 Q220,20 240,38 Q260,48 280,32 Q300,20 320,38 Q340,48 360,35 Q380,28 400,40 L400,80 Z" fill="rgba(201,168,76,0.2)"/>
+          <path d="M0,80 L0,60 Q30,50 60,58 Q90,62 120,50 Q150,42 180,55 Q210,62 240,50 Q270,42 300,55 Q330,62 360,50 Q380,45 400,55 L400,80 Z" fill="rgba(201,168,76,0.15)"/>
+        </svg>
+      </div>
+      <div class="dest-overlay"></div>
+      <div class="dest-content">
+        <div class="dest-country">Venezuela · South America</div>
+        <div class="dest-name">Caribbean Coast</div>
+        <div class="dest-flavor-row"><span class="dest-flavor-badge">✦ Majarete</span></div>
+        <p class="dest-desc">Where the finest cacao in the world meets the turquoise Caribbean. Venezuela's pristine coastline and rich culinary heritage create a sensory experience unlike any other.</p>
+        <button class="btn-select">Select Destination <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ITALY -->
+    <div class="dest-card" onclick="selectDestination('Italy','Amaretti','Venice',this)">
+      <div class="dest-bg bg-italy">
+        <svg style="position:absolute;bottom:80px;left:0;width:100%;opacity:0.2;" viewBox="0 0 400 100" preserveAspectRatio="none">
+          <path d="M0,100 L0,70 L10,70 L10,60 L15,60 Q18,55 22,55 Q26,55 28,60 L32,60 L32,70 L40,70 L40,65 L48,65 L48,55 Q50,45 55,45 Q56,40 60,38 Q64,40 65,45 Q70,48 70,55 L72,55 L72,65 L80,65 L80,70 L90,70 L90,60 L95,60 Q98,52 102,52 Q106,52 109,60 L112,60 L112,70 L120,70 L120,65 L128,65 L128,55 Q130,48 135,48 Q140,48 142,55 L145,55 L145,65 L152,65 L152,70 L160,70 L160,60 L165,60 Q168,53 172,53 Q176,53 178,60 L182,60 L182,70 L190,70 L190,65 L198,65 L198,55 Q200,48 205,48 Q210,48 212,55 L215,55 L215,65 L222,65 L222,70 L230,70 L230,60 L235,60 Q238,52 242,52 Q246,52 248,60 L252,60 L252,70 L260,70 L260,65 L268,65 L268,55 Q270,48 275,48 Q280,48 282,55 L285,55 L285,65 L292,65 L292,70 L300,70 L300,60 L305,60 Q308,53 312,53 Q316,53 318,60 L322,60 L322,70 L330,70 L330,65 L338,65 L338,55 Q340,48 345,48 Q350,48 352,55 L355,55 L355,65 L362,65 L362,70 L370,70 L370,60 L375,60 Q378,53 382,53 Q386,53 388,60 L392,60 L392,70 L400,70 L400,100 Z" fill="rgba(201,168,76,0.3)"/>
+          <path d="M0,100 L0,85 Q50,78 100,85 Q150,90 200,82 Q250,78 300,85 Q350,90 400,83 L400,100 Z" fill="rgba(201,168,76,0.1)"/>
+        </svg>
+      </div>
+      <div class="dest-overlay"></div>
+      <div class="dest-content">
+        <div class="dest-country">Italy · Europe</div>
+        <div class="dest-name">Venice</div>
+        <div class="dest-flavor-row"><span class="dest-flavor-badge">✦ Amaretti</span></div>
+        <p class="dest-desc">A city suspended between water and sky. Venice's labyrinthine canals, golden basilicas, and centuries of artistic mastery make it the most romantic city on earth.</p>
+        <button class="btn-select">Select Destination <span>→</span></button>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center;padding:60px 24px 80px;">
+    <p style="font-size:12px;color:var(--text-muted);letter-spacing:1px;">All destinations are served by direct Lufthansa flights from Frankfurt and Munich.</p>
+    <div class="divider-gold" style="margin-top:32px;"></div>
+    <div class="logos-pair" style="margin-top:32px;animation:none;">
+      <div class="logo-rausch" style="font-size:16px;">Rausch<span> Chocolate</span></div>
+      <div class="logo-divider"></div>
+      <div class="logo-lh" style="font-size:10px;opacity:0.6;">
+        <div class="lh-circle" style="width:24px;height:24px;"><div class="lh-crane" style="font-size:12px;">✈</div></div>
+        Lufthansa
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3: CONFIRMATION -->
+<div id="page3" class="page">
+  <div class="page3-bg"></div>
+  <div class="confetti-ring"></div>
+  <div class="confetti-ring"></div>
+  <div class="confetti-ring"></div>
+  <div style="position:relative;z-index:2;width:100%;max-width:700px;margin:0 auto;">
+    <div class="success-icon">✦</div>
+    <div style="font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;animation:fadeSlideIn 0.6s 0.3s both;">Entry Submitted Successfully</div>
+    <h1 class="page3-title">Your Entry Has<br>Been Submitted</h1>
+    <p class="page3-sub">Thank you for participating in the Discover the World Golden Ticket Campaign.</p>
+    <div class="divider-gold"></div>
+    <p class="page3-text">Our team will review all valid entries. Winners will be personally contacted by our team directly by email within 14 days of the campaign closing date. All travel arrangements will be made in partnership with Lufthansa.</p>
+    <div class="selection-summary" id="summary-display"></div>
+    <div style="width:200px;margin:0 auto 32px;animation:fadeSlideIn 0.6s 0.75s both;">
+      <div class="ticket-card" style="padding:16px 20px;">
+        <div class="ticket-shine"></div>
+        <div class="ticket-inner">
+          <div style="text-align:center;">
+            <div style="font-family:var(--serif);font-size:13px;font-weight:700;color:var(--choc);">Golden Ticket</div>
+            <div style="font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--choc-soft);margin-top:2px;">Submitted ✓</div>
+          </div>
+          <div style="margin-top:10px;background:rgba(26,10,0,0.15);border-radius:6px;padding:5px 10px;font-size:10px;font-family:monospace;color:var(--choc);letter-spacing:3px;text-align:center;font-weight:700;">0493 4127 1918</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-return" onclick="returnToStart()">← Return to Discover the World</button>
+    <div class="logos-pair">
+      <div class="logo-rausch" style="font-size:18px;">Rausch<span> Chocolate</span></div>
+      <div class="logo-divider"></div>
+      <div class="logo-lh" style="font-size:11px;opacity:0.6;">
+        <div class="lh-circle" style="width:28px;height:28px;"><div class="lh-crane" style="font-size:14px;">✈</div></div>
+        Lufthansa
+      </div>
+    </div>
+    <p style="font-size:11px;color:var(--text-muted);margin-top:32px;line-height:1.7;">
+      Discover the World – Golden Ticket Edition is a promotional campaign by Rausch Schokoladenhaus GmbH in partnership with Deutsche Lufthansa AG. Full terms and conditions apply. One winner selected per campaign period.
+    </p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var c=document.getElementById('particles');
+  if(!c)return;
+  for(var i=0;i<30;i++){
+    var p=document.createElement('div');
+    p.className='particle';
+    p.style.cssText='left:'+Math.random()*100+'%;width:'+(Math.random()*3+1)+'px;height:'+(Math.random()*3+1)+'px;animation-duration:'+(Math.random()*8+6)+'s;animation-delay:'+(Math.random()*8)+'s;';
+    c.appendChild(p);
+  }
+})();
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  var pg=document.getElementById(id);
+  pg.classList.add('active','page-enter');
+  pg.addEventListener('animationend',function(){pg.classList.remove('page-enter');},{once:true});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function verifyTicket(){
+  var email=document.getElementById('email-input').value.trim().toLowerCase();
+  var code=document.getElementById('code-input').value.trim().replace(/\s+/g,'');
+  var err=document.getElementById('error-msg');
+  if(email==='gewinnspiel@rausch.de'&&code==='049341271918'){
+    err.style.display='none';
+    var btn=document.getElementById('verify-btn');
+    btn.textContent='✓ Verified';
+    btn.style.background='linear-gradient(135deg,#2a6e2a,#3d9b3d)';
+    btn.style.color='#fff';
+    setTimeout(function(){showPage('page2');},800);
+  } else {
+    err.style.display='block';
+    err.style.animation='none';
+    requestAnimationFrame(function(){err.style.animation='shake 0.4s ease-in-out';});
+  }
+}
+
+document.getElementById('code-input').addEventListener('keydown',function(e){if(e.key==='Enter')verifyTicket();});
+document.getElementById('email-input').addEventListener('keydown',function(e){if(e.key==='Enter')verifyTicket();});
+
+document.getElementById('code-input').addEventListener('input',function(){
+  var v=this.value.replace(/\D/g,'').substring(0,12);
+  var out='';
+  for(var i=0;i<v.length;i++){if(i>0&&i%4===0)out+=' ';out+=v[i];}
+  this.value=out;
+});
+
+var destData={
+  'Germany':{flag:'🇩🇪',city:'Berlin',flavor:'Schokokuss'},
+  'USA':{flag:'🇺🇸',city:'New York',flavor:'Cookie Dough'},
+  'Taiwan':{flag:'🇹🇼',city:'Taipei',flavor:'Boba'},
+  'Venezuela':{flag:'🇻🇪',city:'Caribbean Coast',flavor:'Majarete'},
+  'Italy':{flag:'🇮🇹',city:'Venice',flavor:'Amaretti'}
+};
+
+function selectDestination(country,flavor,city,card){
+  var d=destData[country];
+  var summary=document.getElementById('summary-display');
+  summary.innerHTML=
+    '<div class="summary-card"><div class="summary-label">Destination</div><div class="summary-value">'+d.flag+' '+country+'</div><div class="summary-flavor">'+city+'</div></div>'+
+    '<div class="summary-card"><div class="summary-label">Signature Flavour</div><div class="summary-value" style="font-size:18px;">'+flavor+'</div><div class="summary-flavor">Rausch Origins</div></div>'+
+    '<div class="summary-card"><div class="summary-label">Travel Class</div><div class="summary-value" style="font-size:18px;">First Class</div><div class="summary-flavor">Lufthansa Partner</div></div>';
+  document.querySelectorAll('.dest-card').forEach(function(c){c.style.opacity='0.4';});
+  card.style.opacity='1';
+  card.style.outline='2px solid rgba(201,168,76,0.6)';
+  setTimeout(function(){showPage('page3');},600);
+}
+
+function returnToStart(){
+  document.querySelectorAll('.dest-card').forEach(function(c){c.style.opacity='';c.style.outline='';});
+  document.getElementById('email-input').value='';
+  document.getElementById('code-input').value='';
+  var btn=document.getElementById('verify-btn');
+  btn.textContent='Verify Ticket';
+  btn.style.background='';
+  btn.style.color='';
+  document.getElementById('error-msg').style.display='none';
+  showPage('page1');
+}
+
+document.addEventListener('scroll',function(){
+  var y=window.scrollY;
+  var bg=document.querySelector('.hero1-bg');
+  if(bg)bg.style.transform='translateY('+y*0.3+'px)';
+});
+</script>
 </body>
 </html>
